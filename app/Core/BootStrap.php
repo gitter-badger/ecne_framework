@@ -10,7 +10,6 @@ namespace Core;
 
 use Classes\Input as Input;
 use Classes\File as File;
-use Controllers\Index as Index;
 
 class BootStrap
 {
@@ -53,10 +52,9 @@ class BootStrap
             $this->url = Input::clean($url);
             $this->urlSplit = explode('/', $this->url);
         }
-
         if (isset($this->urlSplit[0])) {
             if (File::controller($this->urlSplit[0])) {
-                $this->controller = ucfirst($this->urlSplit[0]);
+                $this->controller = "Controllers\\".ucfirst($this->urlSplit[0]);
                 $this->controller = new $this->controller;
                 if (isset($this->urlSplit[1]) && method_exists($this->controller, $this->urlSplit[1])) {
                     if(isset($this->urlSplit[2])) {
@@ -68,11 +66,11 @@ class BootStrap
                     $this->controller->index();
                 }
             } else {
-                $this->controller = new Error();
+                $this->controller = new Controllers\Error();
                 $this->controller->index();
             }
         } else {
-            $this->controller = new Index();
+            $this->controller = new Controllers\Index();
             $this->controller->index();
         }
     }
