@@ -66,11 +66,11 @@ class BootStrap
                     $this->controller->index();
                 }
             } else {
-                $this->controller = new Controllers\Error();
+                $this->controller = new \Controllers\Error();
                 $this->controller->index();
             }
         } else {
-            $this->controller = new Controllers\Index();
+            $this->controller = new \Controllers\Index();
             $this->controller->index();
         }
     }
