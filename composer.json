@@ -1,0 +1,23 @@
+{
+  "name": "ecne/ecne_framework",
+  "description":  "MVC&ORM Framework",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "John P O'Grady",
+      "email": "ogradyjp@ogradyjohn.com",
+      "role": "Developer"
+    }
+  ],
+  "autoload":{
+    "psr-4": {
+      "Classes\\": "app/Classes",
+      "Controllers\\": "app/Controllers",
+      "Core\\": "app/Core"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.7.*"
+  }
+}
