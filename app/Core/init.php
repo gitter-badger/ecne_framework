@@ -13,3 +13,17 @@ include_once dirname(dirname(__DIR__)).'/vendor/autoload.php';
 define('ROOT', dirname(dirname(__DIR__)));
 define('VIEWS', dirname(dirname(__DIR__)).'\app\views\\');
 define('URL', 'http://localhost/');
+
+
+/** @var $GLOBALS */
+$GLOBALS['config'] = array(
+    'mysql' => array(
+        'dsn' => '',
+        'tables' => array(),
+        'host' => 'localhost',
+        'username' => '',
+        'password' => '',
+        'db' => '',
+    ),
+    'session' => array()
+);
