@@ -14,7 +14,8 @@
     "psr-4": {
       "Classes\\": "app/Classes",
       "Controllers\\": "app/Controllers",
-      "Core\\": "app/Core"
+      "Core\\": "app/Core",
+      "Models\\": "app/Models"
     }
   },
   "require-dev": {
