@@ -7,6 +7,6 @@ env:
 before_script:
   - composer self-update
   - composer install
-  - mysql -e 'create database if not exits ecne_test;'
+  - mysql -e 'create database if not exists ecne_test;'
 script:
   phpunit --configuration phpunit.xml --coverage-text
