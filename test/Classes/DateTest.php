@@ -6,8 +6,12 @@
 *	@author John O'Grady
 *	@date 22/06/15
 */
+
 class DateTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @method testGetOrdinal
+     */
 	public function testGetOrdinal()
 	{
 		$expected = array(
@@ -25,9 +29,12 @@ class DateTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
+    /**
+     * @method testGetDifferenceFromNow
+     */
 	public function testGetDifferenceFromNow()
 	{
         $result = new \DateTime('1970-01-01');
 		$this->assertInternalType('string', \Classes\Date::getDifferenceFromNow($result->format('Y-d-m H:i:s')));
 	}
-}
+}   /** End Class Definition **/

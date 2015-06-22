@@ -11,6 +11,15 @@ class InputTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function testGetReturnsEmptyWhenNullIndex()
 	{
-		$this->assertEquals('', \Classes\Input::get(''));
+        $result = \Classes\Input::get('foo');
+		$this->assertEquals('', $result);
+		$this->assertInternalType('string', $result);
 	}
+
+    public function testExistsReturnsBoolean()
+    {
+        $result = \Classes\Input::exists('foo');
+        $this->assertEquals(false, $result);
+        $this->assertInternalType('bool', $result);
+    }
 }
