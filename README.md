@@ -21,15 +21,4 @@ Contains a directory structure to manage MVC functionality
 
 Directory Structure:
 
--- appps
-...htaccess
-...-- Classes
-...-- Controllers
-...-- Core
-...-- Models
-...-- View
---public
-...-- res
-......-- css
-index.php
-htaccess
+![alt text](http://ogradyjohn.com/public/res/img/directory_structure.png "Logo Title Text 1")
