@@ -43,6 +43,7 @@ class DBDriver
             case self::POSTGRESQL:
                 break;
             case self::SQLITE:
+                $this->DSN = 'sqlite:'.\Classes\Config::get('mysql/db');
                 break;
             case self::MARIADB:
                 break;
