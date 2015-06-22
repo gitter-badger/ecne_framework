@@ -21,4 +21,4 @@ Contains a directory structure to manage MVC functionality
 
 Directory Structure:
 
-![alt text](http://ogradyjohn.com/public/res/img/directory_structure.png "Ecne Framework Directory Structure")
+![alt text](http://ogradyjohn.com/public/res/img/directory_structure001.png "Ecne Framework Directory Structure")
