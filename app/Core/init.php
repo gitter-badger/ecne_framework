@@ -19,7 +19,8 @@ define('URL', 'http://localhost/');
 $GLOBALS['config'] = array(
     'mysql' => array(
         /**
-         * Supply your DB Type e.g
+         * Supply your DB Type
+         *  Supported DB:
          * -MYSQL
          * -POSTGRESQL
          * -SQLITE
@@ -29,12 +30,16 @@ $GLOBALS['config'] = array(
         'tables' => array(),
         /**
          * hostname of DB - Default is localhost
+         * use if using
          * -MYSQL
+         * -POSTGRESQL
          */
         'host' => 'localhost',
         /**
          * DB Users credentials
-         * - not used for SQLITE
+         * use if using
+         * -MYSQL
+         * -POSTGRESQL
          */
         'username' => '',
         'password' => '',
