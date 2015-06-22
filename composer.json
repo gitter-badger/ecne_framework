@@ -15,7 +15,8 @@
       "Classes\\": "app/Classes",
       "Controllers\\": "app/Controllers",
       "Core\\": "app/Core",
-      "Models\\": "app/Models"
+      "Models\\": "app/Models",
+      "Classes\\DB\\": "app/Classes/DB"
     }
   },
   "require-dev": {

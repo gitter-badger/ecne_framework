@@ -89,7 +89,7 @@ class DataBase
     {
         try {
             $this->pdo = new PDO('mysql:host=localhost;dbname=online_video_test', 'root', '');
-        } catch(PDOException $e) {
+        } catch(\PDOException $e) {
             die($e->getMessage());
         }
     }

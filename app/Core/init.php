@@ -18,7 +18,6 @@ define('URL', 'http://localhost/');
 /** @var $GLOBALS */
 $GLOBALS['config'] = array(
     'mysql' => array(
-        'dsn' => '',
         'tables' => array(),
         'host' => 'localhost',
         'username' => '',
