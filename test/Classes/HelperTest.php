@@ -11,6 +11,8 @@ class HelperTest extends \PHPUnit_Framework_TestCase
 {
     public function testReplaceDirSeparatorReturnsBackSlash()
     {
-        $this->assertEquals("\\", \Classes\Helper::replaceDirSeparator('/'));
+        $result = \Classes\Helper::replaceDirSeparator('/');
+        $this->assertEquals("\\", $result, '/');
+        $this->assertInternalType('string', $result);
     }
 }
