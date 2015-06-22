@@ -1,8 +1,12 @@
 language: php
 php:
   - 5.3.3
+
+env:
+  -DB=mysql
 before_script:
   - composer self-update
   - composer install
+  - mysql -e 'create database if not exits ecne_test;'
 script:
   phpunit --configuration phpunit.xml --coverage-text

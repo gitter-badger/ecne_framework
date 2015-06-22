@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php">
+<phpunit bootstrap="vendor/autoload.php" colors="true">
+    <php>
+        <var name="db_dsn" value="mysql:dbname=ecne_test;host=127.0.0.1" />
+        <var name="db_username" value="root"/>
+        <var name="db_password" value=""/>
+    </php>
     <testsuites>
         <testsuite name="ecne_framework">
             <directory>test</directory>
