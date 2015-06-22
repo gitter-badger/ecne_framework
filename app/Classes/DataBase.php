@@ -1,12 +1,12 @@
 <?php
 
 /**
- *	Class DataBase
- *	@note Supplies an API for querying various databases independent of DB driver,
+ *    Class DataBase
+ * @note Supplies an API for querying various databases independent of DB driver,
  *      -- and calls most queries for general use in most web projects
- *	@author John O'Grady <ogradyjp@ogradyjohn.com or ogradjp@gmail.com>
- *	@version 1.0
- *	@date May 2015
+ * @author John O'Grady <ogradyjp@ogradyjohn.com or ogradjp@gmail.com>
+ * @version 1.0
+ * @date May 2015
  **/
 
 namespace Classes;
@@ -29,7 +29,7 @@ class DataBase
     const SQL_WHERE = 'WHERE ';
 
     /**
-     *  @var \Classes\DB\DBDriver
+     * @var \Classes\DB\DBDriver
      */
     private $dbDriver;
 
@@ -97,7 +97,7 @@ class DataBase
         $this->dbDriver = new DB\DBDriver(Config::get('mysql/driver'));
         try {
             $this->pdo = new PDO($this->dbDriver->getDSN(), 'root', '');
-        } catch(\PDOException $e) {
+        } catch (\PDOException $e) {
             die($e->getMessage());
         }
     }
@@ -212,7 +212,7 @@ class DataBase
      */
     public function buildSelect()
     {
-        $sql = self::SQL_GET.join(', ', $this->selectColumns).' FROM '.$this->table.' ';
+        $sql = self::SQL_GET . join(', ', $this->selectColumns) . ' FROM ' . $this->table . ' ';
         return $sql;
     }
 
@@ -223,8 +223,8 @@ class DataBase
      */
     public function buildWhere()
     {
-        if (count($this->whereClause)==3) {
-           $sql = 'WHERE '.join(' ', $this->whereClause);
+        if (count($this->whereClause) == 3) {
+            $sql = 'WHERE ' . join(' ', $this->whereClause);
             return $sql;
         }
         return '';
@@ -238,7 +238,7 @@ class DataBase
     public function buildOrderBy()
     {
         if (isset($this->orderBy)) {
-            $sql = 'ORDER BY '.join(' ', $this->orderBy).' ';
+            $sql = 'ORDER BY ' . join(' ', $this->orderBy) . ' ';
             return $sql;
         } else {
             return '';
@@ -253,9 +253,9 @@ class DataBase
     public function buildLimit()
     {
         if (isset($this->limit)) {
-            $sql = 'LIMIT '.$this->limit;
+            $sql = 'LIMIT ' . $this->limit;
             if (isset($this->offset)) {
-                $sql .= ', '.$this->offset;
+                $sql .= ', ' . $this->offset;
             }
             return $sql;
         }
@@ -270,10 +270,10 @@ class DataBase
     public function buildQuery()
     {
         return join(" ", array(
-            $this->buildSelect(),
-            $this->buildWhere(),
-            $this->buildOrderBy(),
-            $this->buildLimit()
+                $this->buildSelect(),
+                $this->buildWhere(),
+                $this->buildOrderBy(),
+                $this->buildLimit()
             )
         );
     }

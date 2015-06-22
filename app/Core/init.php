@@ -8,10 +8,10 @@
 /**
  * @note include autoloader file
  */
-include_once dirname(dirname(__DIR__)).'/vendor/autoload.php';
+include_once dirname(dirname(__DIR__)) . '/vendor/autoload.php';
 
 define('ROOT', dirname(dirname(__DIR__)));
-define('VIEWS', dirname(dirname(__DIR__)).'\app\views\\');
+define('VIEWS', dirname(dirname(__DIR__)) . '\app\views\\');
 define('URL', 'http://localhost/');
 
 

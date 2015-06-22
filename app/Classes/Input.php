@@ -44,7 +44,7 @@ class Input
      */
     public static function clean($string)
     {
-       return strip_tags(htmlspecialchars(preg_replace("/[^a-zA-Z0-9-_\/]/", '', $string)));
+        return strip_tags(htmlspecialchars(preg_replace("/[^a-zA-Z0-9-_\/]/", '', $string)));
     }
 
     public static function secure()

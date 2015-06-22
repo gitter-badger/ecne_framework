@@ -17,7 +17,7 @@ class Helper
     public static function replaceDirSeparator($dir)
     {
         if (preg_match('|/|', $dir)) {
-            return preg_replace('|/|','\\',$dir);
+            return preg_replace('|/|', '\\', $dir);
         } else {
             return $dir;
         }

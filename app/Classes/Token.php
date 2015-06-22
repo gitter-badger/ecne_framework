@@ -2,8 +2,8 @@
 
 /**
  *  Class \Classes\Token
- *  @author John O'Grady
- *  @date 22/06/2015
+ * @author John O'Grady
+ * @date 22/06/2015
  */
 
 namespace Classes;

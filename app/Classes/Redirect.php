@@ -13,11 +13,11 @@ class Redirect
      * @access public
      * @param null $location
      */
-	public static function to($location = null)
-	{
-		if ($location) {
-			header('Location:' . $location);
-			exit();
-		}
-	}
+    public static function to($location = null)
+    {
+        if ($location) {
+            header('Location:' . $location);
+            exit();
+        }
+    }
 }   /** End Class Definition **/

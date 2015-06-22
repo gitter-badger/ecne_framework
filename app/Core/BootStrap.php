@@ -31,7 +31,7 @@ class BootStrap
      * @access public
      * @param string $url
      */
-    public function __construct($url='')
+    public function __construct($url = '')
     {
         $this->url = $url;
         if ($this->url) {
@@ -46,7 +46,7 @@ class BootStrap
      * @access public
      * @param string $url
      */
-    public function route($url='')
+    public function route($url = '')
     {
         if ($url) {
             $this->url = Input::clean($url);
@@ -54,10 +54,10 @@ class BootStrap
         }
         if (isset($this->urlSplit[0])) {
             if (File::controller($this->urlSplit[0])) {
-                $this->controller = "Controllers\\".ucfirst($this->urlSplit[0]);
+                $this->controller = "Controllers\\" . ucfirst($this->urlSplit[0]);
                 $this->controller = new $this->controller;
                 if (isset($this->urlSplit[1]) && method_exists($this->controller, $this->urlSplit[1])) {
-                    if(isset($this->urlSplit[2])) {
+                    if (isset($this->urlSplit[2])) {
                         $this->controller->{$this->urlSplit[1]}($this->urlSplit[2]);
                     } else {
                         $this->controller->{$this->urlSplit[1]}();

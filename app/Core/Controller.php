@@ -45,7 +45,7 @@ class Controller
     public function model($model, $params = array())
     {
         if (\Classes\File::model($model)) {
-            $sModel = $model.'Model';
+            $sModel = $model . 'Model';
             $this->model = new $sModel(join(',', $params));
         }
     }

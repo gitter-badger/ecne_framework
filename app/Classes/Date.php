@@ -1,7 +1,7 @@
 <?php
 /**
  *  Class \Classes\Date
- *  @author Johhn O'Grady
+ * @author Johhn O'Grady
  * @date 22/06/15
  */
 namespace Classes;
@@ -37,12 +37,12 @@ class Date
         $diff = date_diff($then, $now);
         if ($diff->format('%y') >= 1) {
             return $diff->format("%y years ago");
-        }elseif ($diff->format('%m') >= 1) {
+        } elseif ($diff->format('%m') >= 1) {
             if ($diff->format('%m') < 2) {
                 return $diff->format('%m month ago');
             }
             return $diff->format("%m months ago");
-        } elseif($diff->format('%d') >= 1) {
+        } elseif ($diff->format('%d') >= 1) {
             switch (true) {
                 case ($diff->format('%d') >= 14 && $diff->format('%d') < 15):
                     return "about a fortnight ago";
@@ -60,16 +60,16 @@ class Date
                     return $diff->format('%d days ago');
                     break;
             }
-        } else if($diff->format('%h') >= 1) {
+        } else if ($diff->format('%h') >= 1) {
             return $diff->format("%h hours ago");
-        } elseif($diff->format('%i') >= 1) {
+        } elseif ($diff->format('%i') >= 1) {
             if ($diff->format('%i') >= 30 && $diff->format('%i') <= 35) {
                 return "half an hour ago";
-            } elseif($diff->format('%i') < 2) {
+            } elseif ($diff->format('%i') < 2) {
                 return $diff->format("%i minute ago");
             }
             return $diff->format("%i minutes ago");
-        } elseif($diff->format('%s') >= 1) {
+        } elseif ($diff->format('%s') >= 1) {
             if ($diff->format('%s') < 2) {
                 return $diff->format("%s second ago");
             } else {

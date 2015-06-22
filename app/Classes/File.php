@@ -12,6 +12,7 @@ class File
     {
 
     }
+
     /**
      * @method exists
      * @access public
@@ -31,7 +32,7 @@ class File
      */
     public static function controller($controller)
     {
-        if (self::exists(ROOT.'/app/Controllers/'.$controller.'.php')) {
+        if (self::exists(ROOT . '/app/Controllers/' . $controller . '.php')) {
             return true;
         } else {
             return false;
@@ -46,7 +47,7 @@ class File
      */
     public static function model($model)
     {
-        if (self::exists(ROOT.'/app/models/'.$model.'Model.php')) {
+        if (self::exists(ROOT . '/app/models/' . $model . 'Model.php')) {
             return true;
         } else {
             return false;

@@ -34,7 +34,7 @@ class Index extends Controller
      * @method search
      * @param string $needle
      */
-    public function search($needle='')
+    public function search($needle = '')
     {
         $this->model('Search', array($needle));
         $this->view->set('title', "Search Page");

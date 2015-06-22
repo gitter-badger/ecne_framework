@@ -1,10 +1,10 @@
 <?php
 /**
- *	Class Session
- *	@note Responsible for creating and accessing session data...
- *	@author John O'Grady <ogradyjp@ogradyjohn.com or ogradjp@gmail.com>
- *	@version 1.0
- *	@date May 2015
+ *    Class Session
+ * @note Responsible for creating and accessing session data...
+ * @author John O'Grady <ogradyjp@ogradyjohn.com or ogradjp@gmail.com>
+ * @version 1.0
+ * @date May 2015
  */
 
 namespace Classes;
@@ -23,10 +23,10 @@ class Session
     /**
      *
      * @method put
-     *	@access public
-     *	@param string $name
-     *	@param string $value
-     *	@return string
+     * @access public
+     * @param string $name
+     * @param string $value
+     * @return string
      *
      */
     public static function put($name, $value)
@@ -93,4 +93,4 @@ class Session
     {
         session_destroy();
     }
-}	/** End Class Definition **/
+}    /** End Class Definition **/

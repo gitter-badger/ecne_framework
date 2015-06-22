@@ -32,7 +32,7 @@ class View
      * @access public
      * @param string $view
      */
-    public function __construct($view='')
+    public function __construct($view = '')
     {
         if ($view) {
             $this->view = $view;
@@ -94,11 +94,11 @@ class View
      */
     public function render()
     {
-        if (File::exists(Helper::replaceDirSeparator(VIEWS.$this->view).'.php')) {
+        if (File::exists(Helper::replaceDirSeparator(VIEWS . $this->view) . '.php')) {
             ob_start();
-            include Helper::replaceDirSeparator(VIEWS.'header.inc').'.php';
-            include Helper::replaceDirSeparator(VIEWS.$this->view).'.php';
-            include Helper::replaceDirSeparator(VIEWS.'footer.inc').'.php';
+            include Helper::replaceDirSeparator(VIEWS . 'header.inc') . '.php';
+            include Helper::replaceDirSeparator(VIEWS . $this->view) . '.php';
+            include Helper::replaceDirSeparator(VIEWS . 'footer.inc') . '.php';
             $this->output = ob_get_contents();
             ob_end_clean();
             echo $this->output;
