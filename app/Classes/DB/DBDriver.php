@@ -41,6 +41,7 @@ class DBDriver
                 $this->DSN = 'mysql:host='.\Classes\Config::get('mysql/host').';dbname='.\Classes\Config::get('mysql/db');
                 break;
             case self::POSTGRESQL:
+                $this->DSN = 'pgsql:dbname='.\Classes\Config::get('mysql/db').';host='.\Classes\Config::get('mysql/host');
                 break;
             case self::SQLITE:
                 $this->DSN = 'sqlite:'.\Classes\Config::get('mysql/db');
