@@ -27,15 +27,20 @@ class DataBase
     const SQL_WHERE = 'WHERE ';
 
     /**
-     * @var DataBase
+     *  @var \Classes\DB\DBDriver
+     */
+    private $dbDriver;
+
+    /**
+     * @var \Classes\DataBase
      */
     private static $instance;
     /**
-     * @var PDO
+     * @var \PDO
      */
     private $pdo;
     /**
-     * @var PDOStatement
+     * @var \PDOStatement
      */
     private $query;
     /**
@@ -87,13 +92,13 @@ class DataBase
      */
     private function __construct()
     {
+        $this->dbDriver = new DB\DBDriver(Config::get('mysql/driver'));
         try {
-            $this->pdo = new PDO('mysql:host=localhost;dbname=online_video_test', 'root', '');
+            $this->pdo = new PDO($this->dbDriver->getDSN(), 'root', '');
         } catch(\PDOException $e) {
             die($e->getMessage());
         }
     }
-
 
     /**
      * @method getInstance

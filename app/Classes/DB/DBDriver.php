@@ -4,10 +4,10 @@
 namespace Classes\DB;
 class DBDriver
 {
-    const MYSQL = 1;
-    const POSTGRESQL = 2;
-    const SQLITE = 3;
-    const MARIADB = 4;
+    const MYSQL = 'MYSQL';
+    const POSTGRESQL = 'POSTGRESQL';
+    const SQLITE = 'SQLITE';
+    const MARIADB = 'MARIADB';
 
     /**
      * @var int
