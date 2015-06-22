@@ -10,7 +10,7 @@ class DBDriver
     const MARIADB = 'MARIADB';
 
     /**
-     * @var int
+     * @var string
      */
     private $driver;
 
