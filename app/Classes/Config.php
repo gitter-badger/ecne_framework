@@ -7,6 +7,7 @@
  */
 
 namespace Classes;
+
 class Config
 {
     /**

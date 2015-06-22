@@ -7,6 +7,7 @@
  */
 
 namespace Core;
+
 class Model
 {
     /**

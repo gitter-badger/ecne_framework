@@ -8,6 +8,7 @@
  */
 
 namespace Controllers;
+
 use Core\Controller as Controller;
 
 class Index extends Controller

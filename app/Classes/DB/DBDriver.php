@@ -1,7 +1,7 @@
 <?php
 
-
 namespace Classes\DB;
+
 class DBDriver
 {
     const MYSQL = 'MYSQL';
@@ -38,13 +38,13 @@ class DBDriver
     {
         switch ($this->driver) {
             case self::MYSQL:
-                $this->DSN = 'mysql:host='.\Classes\Config::get('mysql/host').';dbname='.\Classes\Config::get('mysql/db');
+                $this->DSN = 'mysql:host=' . \Classes\Config::get('mysql/host') . ';dbname=' . \Classes\Config::get('mysql/db');
                 break;
             case self::POSTGRESQL:
-                $this->DSN = 'pgsql:dbname='.\Classes\Config::get('mysql/db').';host='.\Classes\Config::get('mysql/host');
+                $this->DSN = 'pgsql:dbname=' . \Classes\Config::get('mysql/db') . ';host=' . \Classes\Config::get('mysql/host');
                 break;
             case self::SQLITE:
-                $this->DSN = 'sqlite:'.\Classes\Config::get('mysql/db');
+                $this->DSN = 'sqlite:' . \Classes\Config::get('mysql/db');
                 break;
             case self::MARIADB:
                 break;

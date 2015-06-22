@@ -5,6 +5,7 @@
  */
 
 namespace Classes;
+
 class Redirect
 {
     /**

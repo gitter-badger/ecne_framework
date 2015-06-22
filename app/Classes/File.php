@@ -5,6 +5,7 @@
  */
 
 namespace Classes;
+
 class File
 {
     public function __construct()

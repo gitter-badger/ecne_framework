@@ -8,6 +8,7 @@
  */
 
 namespace Classes;
+
 class Session
 {
 

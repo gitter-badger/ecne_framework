@@ -10,8 +10,10 @@
  **/
 
 namespace Classes;
+
 use \PDO;
 use \PDOStatement;
+
 class DataBase
 {
     /**

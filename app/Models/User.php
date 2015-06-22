@@ -8,7 +8,9 @@
  */
 
 namespace Models;
+
 use \Core\Model as Model;
+
 class User extends Model
 {
     public function __construct()
