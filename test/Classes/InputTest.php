@@ -25,4 +25,11 @@ class InputTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(false, $result);
         $this->assertInternalType('bool', $result);
     }
+
+    public function testSecureReturnsFalse()
+    {
+        $result = \Classes\Input::secure();
+        $this->assertFalse($result);
+        $this->assertInternalType('bool', $result);
+    }
 }
