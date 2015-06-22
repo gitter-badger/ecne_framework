@@ -35,7 +35,6 @@ class Controller
         echo "this is the controller class default index method...";
     }
 
-
     /**
      * @method model
      * @access public
@@ -44,7 +43,7 @@ class Controller
      */
     public function model($model, $params = array())
     {
-        if (File::model($model)) {
+        if (\Classes\File::model($model)) {
             $sModel = $model.'Model';
             $this->model = new $sModel(join(',', $params));
         }

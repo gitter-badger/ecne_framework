@@ -8,6 +8,8 @@
  */
 
 namespace Controllers;
+use Core\Controller as Controller;
+
 class Error extends Controller
 {
     /**
@@ -22,7 +24,7 @@ class Error extends Controller
     /**
      * @method index
      * @access public
-     * @throws Exception
+     * @throws \Exception
      */
     public function index()
     {
