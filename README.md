@@ -10,9 +10,9 @@ Ence Framework
 A small scale project to build a base framework for the most used functions in web development
 
 Functions include
-    0. ORM
-    0. MVC
-    0. Input Sanitation
-    0. Hashing and Encrypting data
-    0. Validating user input again preset rules
-    0. Date manipulation
+    * ORM
+    * MVC
+    * Input Sanitation
+    * Hashing and Encrypting data
+    * Validating user input again preset rules
+    * Date manipulation
