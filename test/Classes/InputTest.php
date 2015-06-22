@@ -16,6 +16,9 @@ class InputTest extends \PHPUnit_Framework_TestCase
 		$this->assertInternalType('string', $result);
 	}
 
+    /**
+     * @method testExistsReturnsBoolean
+     */
     public function testExistsReturnsBoolean()
     {
         $result = \Classes\Input::exists('foo');

@@ -35,6 +35,14 @@ class DateTest extends \PHPUnit_Framework_TestCase
 	public function testGetDifferenceFromNow()
 	{
         $result = new \DateTime('1970-01-01');
-		$this->assertInternalType('string', \Classes\Date::getDifferenceFromNow($result->format('Y-d-m H:i:s')));
+
+
+        $this->assertInternalType('string', \Classes\Date::getDifferenceFromNow($result->format('Y-d-m H:i:s')));
 	}
+
+    public function testGetOrdinalLetter()
+    {
+        $result = \Classes\Date::getOrdinal('a');
+        $this->assertFalse($result);
+    }
 }   /** End Class Definition **/
