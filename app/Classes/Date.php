@@ -86,10 +86,14 @@ class Date
      */
     public static function getOrdinal($num)
     {
-        if ((($num % 100) >= 11) && (($num % 100) <= 13)) {
-            return 'th';
+        if (is_int($num)) {
+            if ((($num % 100) >= 11) && (($num % 100) <= 13)) {
+                return 'th';
+            } else {
+                return self::$ordinals[$num % 10];
+            }
         } else {
-            return self::$ordinals[$num % 10];
+            return false;
         }
     }
 }
