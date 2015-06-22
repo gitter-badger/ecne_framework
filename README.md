@@ -16,3 +16,20 @@ Functions include:
 * Hashing and Encrypting data
 * Validating user input again preset rules
 * Date manipulation
+
+Contains a directory structure to manage MVC functionality
+
+Directory Structure:
+
+-- appps
+...htaccess
+...-- Classes
+...-- Controllers
+...-- Core
+...-- Models
+...-- View
+--public
+...-- res
+......-- css
+index.php
+htaccess
