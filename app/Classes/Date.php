@@ -7,7 +7,22 @@
 namespace Classes;
 class Date
 {
+    /**
+     * @var array
+     */
     private static $ordinals = array('th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th');
+
+    /**
+     * @method getDifference
+     * @access public
+     * @param $date1
+     * @param $date2
+     */
+    public static function getDifference($date1, $date2)
+    {
+
+    }
+
     /**
      * @method getDifferenceFromNow
      * @access public
