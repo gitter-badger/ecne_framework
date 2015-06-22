@@ -5,7 +5,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/ecne/ecne_framework/v/unstable)](https://packagist.org/packages/ecne/ecne_framework)
 [![License](https://poser.pugx.org/ecne/ecne_framework/license)](https://packagist.org/packages/ecne/ecne_framework)
 
-Ence Framework
+Ecne Framework
 
 A small scale project to build a base framework for the most used functions in web development
 
