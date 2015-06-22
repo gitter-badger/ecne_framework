@@ -49,5 +49,6 @@ class DBDriver
             default:
                 break;
         }
+        return $this->DSN;
     }
 }
