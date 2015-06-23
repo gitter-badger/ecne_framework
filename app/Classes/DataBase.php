@@ -28,6 +28,7 @@ class DataBase
     const SQL_DESC = 'DESC ';
     const SQL_WHERE = 'WHERE ';
     const SQL_INSERT = 'INSERT INTO ';
+    const SQL_AND = ' AND ';
 
     /**
      * @var \Classes\DB\DBDriver
@@ -162,14 +163,23 @@ class DataBase
     /**
      * @method whereEquals
      * @access public
-     * @param $field
-     * @param $value
+     * @param array
      * @return $this
      */
-    public function whereEquals($field, $value)
+    public function whereEquals($whereEquals)
     {
-        $this->whereClause = array($field, '=', ' ? ');
-        array_push($this->paramArray, $value);
+        if (count($whereEquals) > 0) {
+            $conditions = count($whereEquals)/ 2;
+            for ($i = 0; $i < count($whereEquals); $i+=2) {
+                array_push($this->whereClause, $whereEquals[$i]);
+                array_push($this->whereClause, ' = ');
+                array_push($this->whereClause, ' ? ');
+                array_push($this->paramArray, $whereEquals[$i+1]);
+                if ($i < ($conditions - 1)) {
+                    array_push($this->whereClause, self::SQL_AND);
+                }
+            }
+        }
         return $this;
     }
 
