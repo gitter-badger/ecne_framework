@@ -22,4 +22,9 @@ class Helper
             return $dir;
         }
     }
+
+    public static function returnDoubleQuotes($string)
+    {
+        return '"'.$string.'"';
+    }
 }
