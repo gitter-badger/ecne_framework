@@ -27,6 +27,7 @@ class DataBase
     const SQL_ASC = 'ASC ';
     const SQL_DESC = 'DESC ';
     const SQL_WHERE = 'WHERE ';
+    const SQL_INSERT = 'INSERT INTO ';
 
     /**
      * @var \Classes\DB\DBDriver
@@ -65,6 +66,10 @@ class DataBase
      * @var array
      */
     private $selectColumns = array('*');
+    /**
+     * @var array
+     */
+    private $insert = array();
     /**
      * @var int
      */
@@ -137,6 +142,20 @@ class DataBase
     public function fromTable($table)
     {
         $this->table = $table;
+        return $this;
+    }
+
+    /**
+     * @method insert
+     * @access public
+     * @param $insert
+     * @return $this
+     */
+    public function insert($insert)
+    {
+        if(count($insert)) {
+            $this->insert = $insert;
+        }
         return $this;
     }
 
@@ -217,6 +236,25 @@ class DataBase
     }
 
     /**
+     * @method buildInsert
+     * @access public
+     * @return string
+     */
+    public function buildInsert()
+    {
+        $sql = self::SQL_INSERT . $this->table .' ';
+        $cols = array();
+        $vals = array();
+        foreach ($this->insert as $col => $val) {
+            array_push($cols, $col);
+            array_push($vals, ' ? ');
+            array_push($this->paramArray, $val);
+        }
+        $sql .= ' ( ' . join(", ", $cols) . ' ) VALUES ( ' . join(", ", $vals) . ' ) ';
+        return $sql;
+    }
+
+    /**
      * @method buildWhere
      * @access public
      * @return string
@@ -269,13 +307,17 @@ class DataBase
      */
     public function buildQuery()
     {
-        return join(" ", array(
-                $this->buildSelect(),
-                $this->buildWhere(),
-                $this->buildOrderBy(),
-                $this->buildLimit()
-            )
-        );
+        if (count($this->insert) > 0) {
+            return $this->buildInsert();
+        } else {
+            return join(" ", array(
+                    $this->buildSelect(),
+                    $this->buildWhere(),
+                    $this->buildOrderBy(),
+                    $this->buildLimit()
+                )
+            );
+        }
     }
 
     /**
@@ -324,7 +366,13 @@ class DataBase
                 }
             }
         }
+        self::reset();
         return $this;
+    }
+
+    public function reset()
+    {
+        $this->paramArray = array();
     }
 
     /**
