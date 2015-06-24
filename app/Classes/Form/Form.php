@@ -84,6 +84,21 @@ class Form
         }
     }
 
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    public function setBanner($banner)
+    {
+        $this->banner = $banner;
+    }
+
+    public function getBanner()
+    {
+        return $this->banner;
+    }
+
     /**
      * @method addElement
      * @access public
