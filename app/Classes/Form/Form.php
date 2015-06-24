@@ -76,8 +76,9 @@ class Form
     public function setTitle($title)
     {
         if (preg_match('/[a-zA-Z0-9]{1,}[|]{1}[1-5]{1}/', $title, $matches)) {
-            $this->title = (explode('|', $matches[0])[1]);
-            $this->banner = (explode('|', $matches[0])[0]);
+            $title = explode('|', $matches[0]);
+            $this->title = $title[1];
+            $this->banner = $title[0];
         } else {
             $this->title = '2';
             $this->banner = $title;
