@@ -15,4 +15,9 @@ class DataBaseTest extends PHPUnit_Framework_TestCase
     {
         $this->database = \Classes\DataBase::getInstance();
     }
+
+    public function testDBResultCountIsZeroWhenCreated()
+    {
+        $this->assertEquals(0, count($this->database->result()));
+    }
 }
