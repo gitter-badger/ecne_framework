@@ -26,6 +26,14 @@ class View
      * @var mixed
      */
     protected $output;
+    /**
+     * @var \Classes\Form\Form
+     */
+    protected $form;
+    /**
+     * @var array
+     */
+    private $js = array();
 
     /**
      * overloaded constructor
@@ -85,6 +93,46 @@ class View
     {
         $this->view = $view;
         return $this;
+    }
+
+    /**
+     * @method setJS
+     * @access public
+     * @param $js
+     */
+    public function setJS($js)
+    {
+        $this->js = $js;
+    }
+
+    /**
+     * @method js
+     * @access public
+     * @return array
+     */
+    public function js()
+    {
+        return $this->js;
+    }
+
+    /**
+     * @method setForm
+     * @access public
+     * @param $form
+     */
+    public function setForm($form)
+    {
+        $this->form = $form;
+    }
+
+    /**
+     * @method form
+     * @access public
+     * @return \Classes\Form\Form
+     */
+    public function form()
+    {
+        return $this->form;
     }
 
     /**
