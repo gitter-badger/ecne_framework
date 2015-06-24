@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  Class \Classes\Validation
+ *  Class Validation
  * @author John O'Grady
  * @date 22/06/15
  */
@@ -21,6 +21,10 @@ class Validation
      */
     private $errors = array();
     /**
+     * @var Form
+     */
+    private $form;
+    /**
      * @var array
      */
     private $rules = array(
@@ -38,24 +42,24 @@ class Validation
     /**
      * @method check
      * @access public
-     * @param \Classes\Form\Form $form
+     * @param Form $form
      * @return $this
      */
     public function check(Form $form)
     {
-        if (\Classes\Input::secure()) {
+        if (Input::secure()) {
             foreach ($form->getElements() as $element) {
                 if ($element->isUnique() !== 'false' && preg_match('/|/', $element->isUnique())) {
                     $criteria = explode('|', $element->isUnique());
-                    $check = \Classes\DataBase::getInstance()
+                    $check = DataBase::getInstance()
                         ->selectColumns(array('id'))
                         ->fromTable($criteria[1])
-                        ->whereEquals(array($criteria[0], \Classes\Input::cleanUserInput(\Classes\Input::get($element->getAttributesArray()['name']))))
+                        ->whereEquals(array($criteria[0], Input::cleanUserInput(Input::get($element->getAttributesArray()['name']))))
                         ->run()
                         ->result();
                     if (count($check)) {
-                        $this->addError($element->getAttributesArray()['name'], \Classes\Input::cleanUserInput(\Classes\Input::get($element->getAttribute('name'))) . " already exists");
-                        $element->setShortMessage(\Classes\Input::cleanUserInput(\Classes\Input::get($element->getAttribute('name'))) . " already exists");
+                        $this->addError($element->getAttributesArray()['name'], Input::cleanUserInput(Input::get($element->getAttribute('name'))) . " already exists");
+                        $element->setShortMessage(Input::cleanUserInput(Input::get($element->getAttribute('name'))) . " already exists");
                     }
                 }
                 foreach ($element->getAttributesArray() as $attr => $value) {
@@ -64,19 +68,19 @@ class Validation
                     }
                     switch ($attr) {
                         case 'min':
-                            if (strlen(\Classes\Input::get($element->getAttributesArray()['name'])) < intval($value)) {
+                            if (strlen(Input::get($element->getAttributesArray()['name'])) < intval($value)) {
                                 $this->addError($element->getAttributesArray()['name'], "Too small");
                                 $element->setShortMessage("Must be greather than {$value} characters");
                             }
                             break;
                         case 'max':
-                            if (strlen(\Classes\Input::get($element->getAttributesArray()['name'])) > intval($value)) {
+                            if (strlen(Input::get($element->getAttributesArray()['name'])) > intval($value)) {
                                 $this->addError($element->getAttributesArray()['name'], "Too big");
                                 $element->setShortMessage("Must be less than {$value} characters");
                             }
                             break;
                         case 'eql':
-                            if (!(\Classes\Input::get($element->getAttributesArray()['name']) == \Classes\Input::get($value))) {
+                            if (!(Input::get($element->getAttributesArray()['name']) == Input::get($value))) {
                                 $this->addError($element->getAttributesArray()['name'], "Not equal");
                                 if ($element->getAttributesArray()['type'] == 'password') {
                                     $element->setShortMessage('Passwords do not match');
@@ -92,7 +96,6 @@ class Validation
             }
         } else {
             $this->addError('global-warning', "Error in request");
-            \Classes\Session::flash('global-warning', 'Error in request');
         }
         if (count($this->errors)) {
             $this->passed = false;
@@ -102,8 +105,22 @@ class Validation
     }
 
     /**
+     * @param Form $form
+     * @param $errors
+     */
+    public function checkFormErrors(Form $form, $errors)
+    {
+        foreach ($form->getElements() as $element) {
+            if (isset($errors[$element->getAttribute('name')])) {
+                $element->addClass(Config::get('validation/error-class'));
+            }
+        }
+    }
+
+    /**
      * @method addError
      * @access private
+     * @param $name
      * @param $error
      */
     private function addError($name, $error)

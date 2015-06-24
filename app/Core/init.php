@@ -26,6 +26,9 @@ $GLOBALS['config'] = array(
         'db' => '',
         'user-fields' => array()
     ),
+    'validation' => array(
+        'error-class' => 'form-error'
+    ),
     'session' => array(),
     'token' => array(
         'name' => 'token'
