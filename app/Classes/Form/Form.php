@@ -8,8 +8,8 @@
 
 namespace Classes\Form;
 
-use Classes\Config;
-use \Classes\Token;
+use Classes\Config as Config;
+use Classes\Token as Token;
 
 class Form
 {
@@ -111,7 +111,7 @@ class Form
      */
     public function buildFormHeader()
     {
-        return '<form action="' . $this->action . '"><h' . $this->title . '>' . $this->banner . '</h' . $this->title .'>';
+        return '<form action="' . $this->action . '"><h' . $this->title . '>' . $this->banner . '</h' . $this->title . '>';
     }
 
     /**
