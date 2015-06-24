@@ -4,6 +4,8 @@
 * 	Class InputTest
 */
 
+require_once dirname(dirname(__DIR__)).Helper::replaceDirSeparator('/app/Core/init.php');
+
 class InputTest extends \PHPUnit_Framework_TestCase
 {
 	/**

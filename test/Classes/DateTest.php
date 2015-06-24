@@ -7,6 +7,8 @@
 *	@date 22/06/15
 */
 
+require_once dirname(dirname(__DIR__)).Helper::replaceDirSeparator('/app/Core/init.php');
+
 class DateTest extends \PHPUnit_Framework_TestCase
 {
     /**
