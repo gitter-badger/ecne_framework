@@ -125,11 +125,30 @@ class Form
         return '<input type="hidden" name="' . Config::get('token/name') . '" value="' . $this->token . '" />';
     }
 
+    public function buildBody()
+    {
+        $body = '';
+        foreach ($this->elements as $element) {
+            $body .= $element->render();
+        }
+        return $body;
+    }
+
+    /**
+     * @method buildFormFooter
+     * @access public
+     * @return string
+     */
     public function buildFormFooter()
     {
         return '</form>';
     }
 
+    /**
+     * @method splash
+     * @access public
+     * @param $output
+     */
     public function splash($output)
     {
         ob_start();
@@ -148,7 +167,9 @@ class Form
         $this->output = join(" ", array(
             $this->buildFormHeader(),
             $this->buildToken(),
+            $this->buildBody(),
             $this->buildFormFooter()
         ));
+        $this->splash($this->output);
     }
 }
