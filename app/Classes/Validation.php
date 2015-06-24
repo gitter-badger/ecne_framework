@@ -38,6 +38,7 @@ class Validation
     /**
      * @method check
      * @access public
+     * @param \Classes\Form\Form $form
      * @return $this
      */
     public function check(Form $form)
