@@ -20,10 +20,10 @@ $GLOBALS['config'] = array(
     'mysql' => array(
         'driver' => 'MYSQL',
         'tables' => array(),
-        'host' => 'localhost',
-        'username' => '',
+        'host' => '127.0.0.1',
+        'username' => 'root',
         'password' => '',
-        'db' => '',
+        'db' => 'test',
         'user-fields' => array()
     ),
     'validation' => array(

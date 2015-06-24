@@ -102,7 +102,7 @@ class DataBase
     {
         $this->dbDriver = new DB\DBDriver(Config::get('mysql/driver'));
         try {
-            $this->pdo = new PDO($this->dbDriver->getDSN(), 'root', '');
+            $this->pdo = new PDO($this->dbDriver->getDSN(), Config::get('mysql/username'),Config::get('mysql/password'));
         } catch (\PDOException $e) {
             die($e->getMessage());
         }
@@ -349,6 +349,7 @@ class DataBase
      */
     public function execute($query)
     {
+        echo $query;
         $this->error = false;
         if ($query) {
             if ($this->query = $this->pdo->prepare($query)) {
@@ -382,6 +383,8 @@ class DataBase
 
     public function reset()
     {
+        $this->insert = array();
+        $this->query = null;
         $this->paramArray = array();
     }
 
