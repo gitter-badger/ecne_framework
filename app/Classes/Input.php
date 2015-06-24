@@ -20,6 +20,16 @@ class Input
     }
 
     /**
+     * @method post
+     * @access public
+     * @return bool
+     */
+    public static function post()
+    {
+        return (count($_POST)) ? true : false;
+    }
+
+    /**
      * @method get
      * @access public
      * @param $key
@@ -47,9 +57,20 @@ class Input
         return strip_tags(htmlspecialchars(preg_replace("/[^a-zA-Z0-9-_\/]/", '', $string)));
     }
 
+    /**
+     * @method cleaUserInput
+     * @access public
+     * @param $string
+     * @return string
+     */
+    public static function cleanUserInput($string)
+    {
+        return strip_tags(htmlspecialchars($string));
+    }
+
     public static function secure()
     {
-        if (self::exists('post')) {
+        if (self::post()) {
             if (self::get(Config::get('token/name'))) {
                 if (\Classes\Token::check(self::get(Config::get('token/name')))) {
                     return true;
@@ -57,5 +78,14 @@ class Input
             }
         }
         return false;
+    }
+
+    /**
+     * @method clear
+     * @access public
+     */
+    public static function clear()
+    {
+        $_POST = array();
     }
 } /** End Class Definition **/

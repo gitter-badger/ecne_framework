@@ -18,36 +18,16 @@ define('URL', 'http://localhost/');
 /** @var $GLOBALS */
 $GLOBALS['config'] = array(
     'mysql' => array(
-        /**
-         * Supply your DB Type
-         *  Supported DB:
-         * -MYSQL
-         * -POSTGRESQL
-         * -SQLITE
-         * -MARIADB
-         */
         'driver' => 'MYSQL',
         'tables' => array(),
-        /**
-         * hostname of DB - Default is localhost
-         * use if using
-         * -MYSQL
-         * -POSTGRESQL
-         */
         'host' => 'localhost',
-        /**
-         * DB Users credentials
-         * use if using
-         * -MYSQL
-         * -POSTGRESQL
-         */
         'username' => '',
         'password' => '',
-        /**
-         * DataBase to Use
-         * -SQLITE- define full path to DB file e.g path/to/database.db
-         */
         'db' => '',
+        'user-fields' => array()
     ),
-    'session' => array()
+    'session' => array(),
+    'token' => array(
+        'name' => 'token'
+    )
 );

@@ -8,62 +8,96 @@
 
 namespace Classes;
 
+use Classes\Form\Form as Form;
+
 class Validation
 {
     /**
      * @var bool
      */
-    private $_passed = false;
-
+    private $passed = false;
     /**
      * @var array
      */
-    private $_errors = array();
+    private $errors = array();
+    /**
+     * @var array
+     */
+    private $rules = array(
+        'min',
+        'max',
+        'contains',
+        'email',
+        'eql'
+    );
+
+    public function __construct()
+    {
+    }
 
     /**
      * @method check
      * @access public
-     * @param $source
-     * @param array $items
      * @return $this
      */
-    public function check($source, $items = array())
+    public function check(Form $form)
     {
-        foreach ($items as $item => $rules) {
-            foreach ($rules as $rule => $rule_value) {
-                $value = $source[$item];
-                $item = strip_tags($item);
-                if ($rule === 'required' && empty($value)) {
-                    $this->addError("{$rules['name']} is required");
-                } elseif (!empty($value)) {
-                    switch ($rule) {
+        if (\Classes\Input::secure()) {
+            foreach ($form->getElements() as $element) {
+                if ($element->isUnique() !== 'false' && preg_match('/|/', $element->isUnique())) {
+                    $criteria = explode('|', $element->isUnique());
+                    $check = \Classes\DataBase::getInstance()
+                        ->selectColumns(array('id'))
+                        ->fromTable($criteria[1])
+                        ->whereEquals(array($criteria[0], \Classes\Input::cleanUserInput(\Classes\Input::get($element->getAttributesArray()['name']))))
+                        ->run()
+                        ->result();
+                    if (count($check)) {
+                        $this->addError($element->getAttributesArray()['name'], \Classes\Input::cleanUserInput(\Classes\Input::get($element->getAttribute('name'))) . " already exists");
+                        $element->setShortMessage(\Classes\Input::cleanUserInput(\Classes\Input::get($element->getAttribute('name'))) . " already exists");
+                    }
+                }
+                foreach ($element->getAttributesArray() as $attr => $value) {
+                    if (!in_array($attr, $this->rules)) {
+                        continue;
+                    }
+                    switch ($attr) {
                         case 'min':
-                            if (strlen(trim($value)) < $rule_value) {
-                                $this->addError("{$rules['name']} must be a minimum of {$rule_value} characters...");
+                            if (strlen(\Classes\Input::get($element->getAttributesArray()['name'])) < intval($value)) {
+                                $this->addError($element->getAttributesArray()['name'], "Too small");
+                                $element->setShortMessage("Must be greather than {$value} characters");
                             }
                             break;
                         case 'max':
-                            if (strlen(trim($value)) > $rule_value) {
-                                $this->addError("{$rules['name']} must be a maximum of {$rule_value} characters...");
+                            if (strlen(\Classes\Input::get($element->getAttributesArray()['name'])) > intval($value)) {
+                                $this->addError($element->getAttributesArray()['name'], "Too big");
+                                $element->setShortMessage("Must be less than {$value} characters");
                             }
                             break;
-                        case 'matches':
-                            if ($value != $source[$rule_value]) {
-                                $this->addError("{$rules['name']} must match {$items[$rule_value]['name']}");
+                        case 'eql':
+                            if (!(\Classes\Input::get($element->getAttributesArray()['name']) == \Classes\Input::get($value))) {
+                                $this->addError($element->getAttributesArray()['name'], "Not equal");
+                                if ($element->getAttributesArray()['type'] == 'password') {
+                                    $element->setShortMessage('Passwords do not match');
+                                } else if ($element->getAttributesArray()['type'] == 'email') {
+                                    $element->setShortMessage('Emails do not match');
+                                }
                             }
-                            break;
-                        case 'unique':
                             break;
                         default:
                             break;
                     }
                 }
             }
+        } else {
+            $this->addError('global-warning', "Error in request");
+            \Classes\Session::flash('global-warning', 'Error in request');
         }
-        if (empty($this->_errors)) {
-            $this->_passed = true;
+        if (count($this->errors)) {
+            $this->passed = false;
+        } else {
+            $this->passed = true;
         }
-        return $this;
     }
 
     /**
@@ -71,9 +105,9 @@ class Validation
      * @access private
      * @param $error
      */
-    private function addError($error)
+    private function addError($name, $error)
     {
-        $this->_errors[] = $error;
+        $this->errors[$name] = $error;
     }
 
     /**
@@ -83,7 +117,7 @@ class Validation
      */
     public function errors()
     {
-        return $this->_errors;
+        return $this->errors;
     }
 
     /**
@@ -93,6 +127,6 @@ class Validation
      */
     public function passed()
     {
-        return $this->_passed;
+        return $this->passed;
     }
 }   /** End Class Definition **/
