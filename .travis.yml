@@ -8,5 +8,6 @@ before_script:
   - composer self-update
   - composer install
   - mysql -e 'create database if not exists ecne_test;'
+  - mysql -e 'create table if not exists test (id int(11) not null auto_increment, test varchar(20) not null, primary key(id));'
 script:
   phpunit --configuration phpunit.xml --coverage-text
