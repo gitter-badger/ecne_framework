@@ -25,6 +25,6 @@ class Helper
 
     public static function returnDoubleQuotes($string)
     {
-        return '"'.$string.'"';
+        return '"' . $string . '"';
     }
 }

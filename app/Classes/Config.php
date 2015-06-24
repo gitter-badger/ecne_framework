@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  Class Config
+ * Class Config
  * @author John O'Grady
  * @date 21/06/15
  */

@@ -154,7 +154,7 @@ class DataBase
      */
     public function insert($insert)
     {
-        if(count($insert)) {
+        if (count($insert)) {
             $this->insert = $insert;
         }
         return $this;
@@ -169,12 +169,12 @@ class DataBase
     public function whereEquals($whereEquals)
     {
         if (count($whereEquals) > 0) {
-            $conditions = count($whereEquals)/ 2;
-            for ($i = 0; $i < count($whereEquals); $i+=2) {
+            $conditions = count($whereEquals) / 2;
+            for ($i = 0; $i < count($whereEquals); $i += 2) {
                 array_push($this->whereClause, $whereEquals[$i]);
                 array_push($this->whereClause, ' = ');
                 array_push($this->whereClause, ' ? ');
-                array_push($this->paramArray, $whereEquals[$i+1]);
+                array_push($this->paramArray, $whereEquals[$i + 1]);
                 if ($i < ($conditions - 1)) {
                     array_push($this->whereClause, self::SQL_AND);
                 }
@@ -252,7 +252,7 @@ class DataBase
      */
     public function buildInsert()
     {
-        $sql = self::SQL_INSERT . $this->table .' ';
+        $sql = self::SQL_INSERT . $this->table . ' ';
         $cols = array();
         $vals = array();
         foreach ($this->insert as $col => $val) {
