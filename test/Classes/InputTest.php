@@ -4,7 +4,7 @@
 * 	Class InputTest
 */
 
-require_once dirname(dirname(__DIR__)).Helper::replaceDirSeparator('/app/Core/init.php');
+require_once dirname(dirname(__DIR__)).'/app/Core/init.php';
 
 class InputTest extends \PHPUnit_Framework_TestCase
 {
