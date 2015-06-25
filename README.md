@@ -14,7 +14,7 @@ Functions include:
 * MVC
 * Input Sanitation
 * Hashing and Encrypting data
-* Validating user input again preset rules
+* Form Builder for creating forms and to validate data passed with the form  
 * Date manipulation
 
 Contains a directory structure to manage MVC functionality
