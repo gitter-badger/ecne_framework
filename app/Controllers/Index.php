@@ -29,17 +29,4 @@ class Index extends Controller
         $this->view->set('title', 'Home Page');
         $this->view->view('index/index')->render();
     }
-
-    /**
-     * @method search
-     * @param string $needle
-     */
-    public function search($needle = '')
-    {
-        $this->model('Search', array($needle));
-        $this->view->set('title', "Search Page");
-        $this->view->set('criteria', $needle);
-        $this->view->set('searchData', $this->model->get($needle));
-        $this->view->view('index/search')->render();
-    }
 }   /** End Class Definition **/
