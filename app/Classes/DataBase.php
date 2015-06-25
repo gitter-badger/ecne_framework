@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Class DataBase
+ * Class DataBase
  * @note Supplies an API for querying various databases independent of DB driver,
  *      -- and calls most queries for general use in most web projects
  * @author John O'Grady <ogradyjp@ogradyjohn.com or ogradjp@gmail.com>
@@ -102,7 +102,7 @@ class DataBase
     {
         $this->dbDriver = new DB\DBDriver(Config::get('mysql/driver'));
         try {
-            $this->pdo = new PDO($this->dbDriver->getDSN(), Config::get('mysql/username'),Config::get('mysql/password'));
+            $this->pdo = new PDO($this->dbDriver->getDSN(), Config::get('mysql/username'), Config::get('mysql/password'));
         } catch (\PDOException $e) {
             die($e->getMessage());
         }
