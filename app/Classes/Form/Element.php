@@ -14,6 +14,7 @@ class Element
     const TYPE_EMAIL = 'email';
     const TYPE_PASSWORD = 'password';
     const TYPE_SUBMIT = 'submit';
+    const TYPE_FILE = 'file';
     const TYPE_HIDDEN = 'hidden';
 
     /**
