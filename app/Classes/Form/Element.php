@@ -34,13 +34,28 @@ class Element
      * @var string
      */
     private $isUnique = '';
+    /**
+     * @var string
+     */
+    private $label;
 
+    /**
+     * @method constructor
+     * @access public
+     * @param $type
+     * @param $attributes
+     * @param string $unique
+     */
     public function __construct($type, $attributes, $unique = 'false')
     {
         $this->type = $type;
         $this->setAttribute('type', $this->type);
         $this->isUnique = $unique;
         foreach ($attributes as $key => $val) {
+            if ($key === 'label') {
+                $this->label = $val;
+                continue;
+            }
             $this->setAttribute($key, $val);
         }
     }
@@ -111,7 +126,8 @@ class Element
         $additional = '';
         if ($this->hasClass('form-error')) {
         }
-        return '<div class="form-group ' . join(" ", $additionalClasses) . '"><input ' . $this->getAttributes() . ' />' . $additional . '</div>';
+        $this->label = (isset($this->label)) ? '<label>' . $this->label . '</label>' : '';
+        return '<div class="form-group ' . join(" ", $additionalClasses) . '">' . $this->label . '<input ' . $this->getAttributes() . ' />' . $additional . '</div>';
     }
 
 }
