@@ -17,4 +17,11 @@ class HelperTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("\\", $result, '/');
         $this->assertInternalType('string', $result);
     }
+
+    public function testReturnDoubleQuotesReturnsDoubleQuotes()
+    {
+        $result = \Classes\Helper::returnDoubleQuotes('test');
+        $this->assertEquals('"test"', $result, 'test');
+        $this->assertInternalType('string', $result);
+    }
 }
