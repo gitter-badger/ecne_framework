@@ -349,7 +349,6 @@ class DataBase
      */
     public function execute($query)
     {
-        echo $query;
         $this->error = false;
         if ($query) {
             if ($this->query = $this->pdo->prepare($query)) {
