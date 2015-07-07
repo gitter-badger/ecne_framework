@@ -1,4 +1,6 @@
 # ecne_framework
+
+[![Join the chat at https://gitter.im/ecne/ecne_framework](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ecne/ecne_framework?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://api.travis-ci.org/ecne/ecne_framework.svg?branch=master)](https://travis-ci.org/ecne/ecne_framework)
 [![Latest Stable Version](https://poser.pugx.org/ecne/ecne_framework/v/stable)](https://packagist.org/packages/ecne/ecne_framework)
 [![Total Downloads](https://poser.pugx.org/ecne/ecne_framework/downloads)](https://packagist.org/packages/ecne/ecne_framework)
